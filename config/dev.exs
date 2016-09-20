@@ -39,5 +39,5 @@ config :blog_press, BlogPress.Repo,
   username: "postgres",
   password: "postgres",
   database: "blog_press_dev",
-  hostname: "localhost",
+  hostname: "postgre95",
   pool_size: 10
