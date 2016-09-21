@@ -9,6 +9,8 @@
     %title Hello BlogPress!
     %link{href: "#{static_path(@conn, "/css/app.css")}", rel: "stylesheet"}
     %script{src: "#{static_path(@conn, "/js/app.js")}"}
+    -# TODO: Remove marked.js
+    %script{src: "https://cdn.jsdelivr.net/marked/0.3.5/marked.min.js"}
   %body
     #app
       = render @view_module, @view_template, assigns

@@ -1,4 +1,4 @@
 <template lang="pug">
 article.content
-  h2 World!
+  h1 TopPage
 </template>

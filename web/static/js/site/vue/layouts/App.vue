@@ -3,10 +3,11 @@
     header.header
       h1.site-title 
         .header-brand
-          img(src="/images/phoenix.png" width=728 height=99)
+          router-link(to="/") 
+            img(src="/images/phoenix.png" width=728 height=99)
     .wrapper
       .main
-        router-view
+        router-view.view
       nav.sidebar
         h3.sidebar-heading Taxons
         ul.siderbar-menu(v-for="menu in sidemenus")
