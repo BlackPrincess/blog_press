@@ -17,6 +17,9 @@ config :blog_press, BlogPress.Endpoint,
   pubsub: [name: BlogPress.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+# Configures template engines
+config :phoenix, :template_engines, haml: PhoenixHaml.Engine
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

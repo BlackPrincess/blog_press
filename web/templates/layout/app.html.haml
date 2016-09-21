@@ -1,0 +1,13 @@
+!!!
+%html{lang: "ja"}
+  %head
+    %meta{charset: 'utf-8'}
+    %meta{http-equiv: "X-UA-Compatible", content: "IE=edge,chrome=1"}
+    %meta{name: "viewport", content: "initial-scale=1.0, width=device-width, user-scalable=yes"}
+    %meta{content: "", name: "description"}
+    %meta{content: "BlackPrincess", name: "author"}
+    %title Hello BlogPress!
+    %link{href: "#{static_path(@conn, "/css/app.css")}", rel: "stylesheet"}
+  %body
+    #app
+      = render @view_module, @view_template, assigns
