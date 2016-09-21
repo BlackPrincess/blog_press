@@ -8,6 +8,7 @@
     %meta{content: "BlackPrincess", name: "author"}
     %title Hello BlogPress!
     %link{href: "#{static_path(@conn, "/css/app.css")}", rel: "stylesheet"}
+    %script{src: "#{static_path(@conn, "/js/app.js")}"}
   %body
     #app
       = render @view_module, @view_template, assigns

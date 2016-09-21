@@ -19,3 +19,20 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+import Vue from 'vue'
+import { sync } from 'vuex-router-sync'
+
+import App from './site/vue/layouts/App.vue'
+import router from './site/route'
+import store from './site/vuex/store'
+
+sync(store, router)
+
+document.addEventListener("DOMContentLoaded", () => {
+  new Vue({
+    el: '#app',
+    render: h => h(App),
+    router,
+    store
+  })
+})
