@@ -25,24 +25,14 @@ module.exports = {
 
   module: {
     loaders: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "babel",
-        query: {
-          presets: ['es2015']
-        }
-      }, {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style", "css")
-      }, {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract(
+      { test: /\.js$/, loader: "babel", exclude: /node_modules/}, 
+      { test: /\.vue$/, loader: 'vue' },
+      { test: /\.css$/, loader: ExtractTextPlugin.extract("style", "css")}, 
+      { test: /\.scss$/, loader: ExtractTextPlugin.extract(
           "style",
           "css!sass?includePaths[]=" + __dirname +  "/node_modules"
         )
-      },
-      { test: /\.vue$/, loader: 'vue' }
+      }
     ]
   },
   vue: {
