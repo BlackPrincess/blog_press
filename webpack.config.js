@@ -1,5 +1,12 @@
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var CopyWebpackPlugin = require("copy-webpack-plugin");
+const autoprefixer = require('autoprefixer')
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const CopyWebpackPlugin = require("copy-webpack-plugin")
+
+const postcss = [
+  autoprefixer({
+    browsers: ['> 1%', 'last 2 versions', 'ie >= 11']
+  })
+]
 
 module.exports = {
   devtool: "source-map",
@@ -37,6 +44,12 @@ module.exports = {
       },
       { test: /\.vue$/, loader: 'vue' }
     ]
+  },
+  vue: {
+    loaders: {
+      scss: 'style!css!sass'
+    },
+    postcss
   },
 
   plugins: [
