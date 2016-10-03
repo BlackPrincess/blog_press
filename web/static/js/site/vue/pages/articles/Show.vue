@@ -1,53 +1,42 @@
 <template lang="pug">
   article.article
-    h1.page-title Phoenixはじめました
-    section.article-body(v-html="md2html(article.body)")
+    h1.page-title(v-text="article.title")
+    section.article-body(v-html="bodyHtml")
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+import * as articleApi from '../../../api/articles'
+
 export default {
-  computed: {
-    article() {
-      return {
-        title: 'Phoenixはじめました',
-        // TODO: Remove marked.js
-        body: `## Elixirのインストール
-\`\`\`sh
-brew install erlang
-
-brew install exenv
-brew install elixir-build
-
-echo 'export PATH="$HOME/.exenv/bin:$PATH"' >> ~/.zshenv
-echo 'eval "$(exenv init -)"' >> ~/.zshenv
-exec zsh -l
-
-exenv install -l
-exenv install 1.2.5
-exenv global 1.2.5
-
-# check
-elixir -v
-mix -v
-\`\`\`
-
-## Phoenixのインストール
-
-\`\`\`sh
-mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez
-\`\`\`
-
-## Phoenixプロジェクトの作成
-
-\`\`\`sh
-mix phoenix.new your_app
-\`\`\`
-`
+  props: {
+    article: {
+      title: {
+        type: String,
+        default: '',
+        required: true
+      },
+      body: {
+        type: String,
+        default: '',
+        required: true
       }
+    }
+  },
+  computed: {
+    bodyHtml: function() {
+      if(this.article == null) return ''
+      return this.md2html(this.article.body)
     }
   },
   methods: {
     md2html: (arg) => window.marked(arg) // TODO: Remove marked.js
+  },
+  beforeCreate() {
+    // TODO: Action & mutation
+    articleApi.fetchArticle(this.$route.params.permalink).then((res) => {
+      this.article = res.data
+    })
   }
 }
 </script>

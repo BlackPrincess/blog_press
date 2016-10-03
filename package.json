@@ -5,12 +5,13 @@
     "start": "webpack -w -c --progress"
   },
   "dependencies": {
+    "axios": "^0.14.0",
     "k-css": "^1.0.0",
     "phoenix": "file:deps/phoenix",
     "phoenix_html": "file:deps/phoenix_html",
     "vue": "^2.0.0-rc.6",
-    "vuex": "^2.0.0-rc.5",
     "vue-router": "^2.0.0-rc.5",
+    "vuex": "^2.0.0-rc.5",
     "vuex-router-sync": "^3.0.0"
   },
   "devDependencies": {

@@ -17,12 +17,18 @@ defmodule BlogPress.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    # fot vue-router
-    get "/*any", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", BlogPress do
-  #   pipe_through :api
-  # end
+  scope "/api", BlogPress do
+    pipe_through :api
+    
+    resources "/articles", ArticlesController, only: [:show]
+  end
+  
+  scope "/", BlogPress do
+    pipe_through :browser # Use the default browser stack
+    # for vue-router
+    get "/*any", PageController, :index
+  end
 end
