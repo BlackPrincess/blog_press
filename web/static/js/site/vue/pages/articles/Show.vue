@@ -9,23 +9,16 @@ import {mapGetters} from 'vuex'
 import * as articleApi from '../../../api/articles'
 
 export default {
-  props: {
-    article: {
-      title: {
-        type: String,
-        default: '',
-        required: true
-      },
-      body: {
-        type: String,
-        default: '',
-        required: true
+  data(){
+    return {
+      article: {
+        title: '', 
+        body: '' 
       }
     }
   },
   computed: {
     bodyHtml: function() {
-      if(this.article == null) return ''
       return this.md2html(this.article.body)
     }
   },

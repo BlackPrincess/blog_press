@@ -11,6 +11,6 @@ export default new VueRouter({
   mode: 'history',
   routes: [
     { path: '/', component: Root },
-    { path: '/article/p/:permalink', component: ArticleShow }
+    { path: '/article/p/:permalink', name: 'article/show', component: ArticleShow }
   ]
 })
