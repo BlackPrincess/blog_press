@@ -42,7 +42,15 @@ defmodule BlogPress.ArticlesView do
   def render_json(title, body) do
     %{
       title: title,
-      body: body
+      body: body,
+      published_at: "2016-10-04 11:22:33",
+      tags: [
+        %{name: "Elixir"},
+        %{name: "Phoenix"}
+      ],
+      taxon: %{
+        name: "ポエム"
+      }
     }
   end
 end

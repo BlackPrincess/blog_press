@@ -1,6 +1,19 @@
 <template lang="pug">
   article.article
-    h1.page-title(v-text="article.title")
+    header.article-header
+      h1.page-title(v-text="article.title")
+      .article-header-info
+        p.left
+          span.label taxon:
+          span.data(v-text="article.taxon.name")
+        p.right
+          span.label published at:
+          span.data(v-text="article.published_at")
+      p
+        ul.tags
+          li(v-for="tag in article.tags")
+            span.tag(v-text="tag.name")
+          
     section.article-body(v-html="bodyHtml")
 </template>
 
@@ -13,7 +26,12 @@ export default {
     return {
       article: {
         title: '', 
-        body: '' 
+        body: '',
+        published_at: '2016-10-04 11:22:33',
+        tags: [],
+        taxon: {
+          name: ''
+        }
       }
     }
   },
@@ -35,8 +53,55 @@ export default {
 </script>
 
 <style lang="scss">
+.tags {
+  li {
+    display: inline-block;
+  }
+}
+.tag {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 5px 8px;
+  font-size: 1.4rem;
+  border-radius: 8px;
+  color: #fcfcfc;
+  background-color: #12a3a3;
+}
+
+.article-header {
+  .label {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+  
+  .data {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 1.6rem;
+  }
+  
+  .article-header-info {
+    margin: 3px 0;
+    
+    &:after {
+      content:"";display:block;clear:both;
+    }
+  }
+  
+  .left {
+    float: left;
+  }
+  
+  .right {
+    float: right;
+  }
+}
+
 $font-monospace: Consolas, 'Courier New', Courier, Monaco, monospace;
 .article-body {
+  margin-top: 40px;
   font-size: 1.6rem;
   
   h1 {
