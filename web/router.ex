@@ -26,6 +26,13 @@ defmodule BlogPress.Router do
     resources "/articles", ArticlesController, only: [:show]
   end
   
+  scope "/admin", BlogPress, as: :admin do
+    pipe_through :browser
+    
+    get "/", Admin.PageController, :index
+    get "/*any", Admin.PageController, :index
+  end
+  
   scope "/", BlogPress do
     pipe_through :browser # Use the default browser stack
     # for vue-router

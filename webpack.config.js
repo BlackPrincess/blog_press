@@ -11,7 +11,8 @@ const postcss = [
 module.exports = {
   devtool: "source-map",
   entry: {
-    "app": ["./web/static/css/app.scss", "./web/static/js/app.js"]
+    "app": ["./web/static/css/app.scss", "./web/static/js/app.js"],
+    "admin": ["./web/static/css/admin.scss", "./web/static/js/admin.js"]
   },
 
   output: {
