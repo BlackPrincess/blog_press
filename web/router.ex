@@ -8,6 +8,11 @@ defmodule BlogPress.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
+  
+  pipeline :browser_auth do
+    plug Guardian.Plug.VerifySession, key: :admin
+    plug Guardian.Plug.LoadResource, key: :admin
+  end
 
   pipeline :api do
     plug :accepts, ["json"]
@@ -27,9 +32,14 @@ defmodule BlogPress.Router do
   end
   
   scope "/admin", BlogPress, as: :admin do
-    pipe_through :browser
+    pipe_through [:browser, :browser_auth]
     
     get "/", Admin.PageController, :index
+    # login
+    get "/login", Admin.SessionController, :login
+    post "/login", Admin.SessionController, :create
+    get "/logout", Admin.SessionController, :destroy
+    
     get "/*any", Admin.PageController, :index
   end
   

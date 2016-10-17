@@ -1,0 +1,6 @@
+%h1 Login Page
+= form_for @conn, admin_session_path(@conn, :create), [as: :login_params], fn f ->
+  = text_input f, :email
+  = text_input f, :password
+  = submit "login"
+- end

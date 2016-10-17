@@ -9,3 +9,4 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+BlogPress.Repo.insert!(BlogPress.AdminUser.changeset(%BlogPress.AdminUser{}, %{name: "admin", email: "admin@example.com", password: "admin@example.com"}))

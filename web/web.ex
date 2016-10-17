@@ -38,6 +38,20 @@ defmodule BlogPress.Web do
       import BlogPress.Gettext
     end
   end
+  
+  def admin_controller do
+    quote do
+      use Phoenix.Controller, namespace: BlogPress.Admin
+      use Guardian.Phoenix.Controller, key: :admin
+
+      alias BlogPress.Repo
+      import Ecto
+      import Ecto.Query
+
+      import BlogPress.Router.Helpers
+      import BlogPress.Gettext
+    end
+  end
 
   def view do
     quote do

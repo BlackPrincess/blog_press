@@ -20,6 +20,19 @@ config :blog_press, BlogPress.Endpoint,
 # Configures template engines
 config :phoenix, :template_engines, haml: PhoenixHaml.Engine
 
+# Configures gurdian
+config :guardian, Guardian,
+  allowed_algos: ["HS512"], # optional
+  verify_module: Guardian.JWT,  # optional
+  issuer: "BlogPress",
+  ttl: { 30, :days },
+  verify_issuer: true, # optional
+  secret_key: System.get_env("GUARDIAN_SECRET") || "secret_key", # FIXME: Secret key
+  serializer: BlogPress.GuardianSerializer
+
+# Configures comeonin
+config :comeonin, :bcrypt_log_rounds, 4
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
