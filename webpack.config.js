@@ -12,7 +12,8 @@ module.exports = {
   devtool: "source-map",
   entry: {
     "app": ["./web/static/css/app.scss", "./web/static/js/app.js"],
-    "admin": ["./web/static/css/admin.scss", "./web/static/js/admin.js"]
+    "admin": ["./web/static/css/admin.scss", "./web/static/js/admin.js"],
+    "login": ["./web/static/css/login.scss"]
   },
 
   output: {

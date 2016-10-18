@@ -1,6 +1,27 @@
-%h1 Login Page
-= form_for @conn, admin_session_path(@conn, :create), [as: :login_params], fn f ->
-  = text_input f, :email
-  = text_input f, :password
-  = submit "login"
-- end
+!!!
+%html{lang: "ja"}
+  %head
+    %meta{charset: 'utf-8'}
+    %meta{http-equiv: "X-UA-Compatible", content: "IE=edge,chrome=1"}
+    %meta{name: "viewport", content: "initial-scale=1.0, width=device-width, user-scalable=yes"}
+    %meta{content: "", name: "description"}
+    %meta{content: "BlackPrincess", name: "author"}
+    %title BlogPress Admin Page
+    %link{href: "#{static_path(@conn, "/css/login.css")}", rel: "stylesheet"}
+  %body
+    #app
+      %article.login
+        %h1.heading Blog Press
+        .line
+        = form_for @conn, admin_session_path(@conn, :create), [as: :login_params, class: "login-form"], fn f ->
+          .form-group
+            %label.form-label E-mail
+            .form-inputs
+              = text_input f, :email, type: :email, class: "input", placeholder: "email"
+          .form-group
+            %label.form-label Password
+            .form-inputs
+              = text_input f, :password, type: :password, class: "input", placeholder: "password"
+          .form-controls
+            = submit "Login", class: "btn btn-login"
+        - end

@@ -3,10 +3,11 @@ defmodule BlogPress.Admin.SessionController do
   
   alias BlogPress.AdminUser
   
-  plug :put_layout, {BlogPress.Admin.LayoutView, "admin.html"}
+  plug :put_layout, false
   
   def login(conn, _params, _user \\ nil, _claims \\ nil) do
-    render conn, "login.html"
+    conn
+      |> render "login.html"
   end
   
   def create(conn, params, _user, _claims) do
