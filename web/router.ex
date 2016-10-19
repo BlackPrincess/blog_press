@@ -17,6 +17,14 @@ defmodule BlogPress.Router do
   pipeline :api do
     plug :accepts, ["json"]
   end
+  
+  pipeline :admin_api do
+    plug :accepts, ["json"]
+    plug :fetch_session
+    plug :put_secure_browser_headers
+    plug Guardian.Plug.VerifySession, key: :admin
+    plug Guardian.Plug.LoadResource, key: :admin
+  end
 
   scope "/", BlogPress do
     pipe_through :browser # Use the default browser stack
@@ -39,7 +47,16 @@ defmodule BlogPress.Router do
     get "/login", Admin.SessionController, :login
     post "/login", Admin.SessionController, :create
     get "/logout", Admin.SessionController, :destroy
+  end
+  
+  scope "/admin/api", BlogPress, as: :admin_api do
+    pipe_through [:admin_api]
     
+    resources "/taxonomies", Admin.Api.TaxonomiesController, only: [:index, :create]
+  end
+  
+  scope "/admin", BlogPress, as: :admin do
+    pipe_through [:browser, :browser_auth]
     get "/*any", Admin.PageController, :index
   end
   

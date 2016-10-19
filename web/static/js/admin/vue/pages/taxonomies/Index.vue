@@ -10,14 +10,18 @@
 </template>
 
 <script>
+import * as api from "../../../api/taxonomies" // TODO:
+
 export default {
   data() {
     return {
-      taxonomies: [
-          {id: 1, name: 'foo'},
-          {id: 2, name: 'bar'}
-        ]
+      taxonomies: []
     }
+  },
+  beforeCreate() {
+    api.fetchTaxonomies().then(res => {
+      this.taxonomies = res.data
+    })
   }
 }
 </script>

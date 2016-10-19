@@ -3,9 +3,9 @@ defmodule BlogPress.Repo.Migrations.CreateAdminUser do
 
   def change do
     create table(:admin_users) do
-      add :name, :string
-      add :email, :string
-      add :password_encrypted, :string
+      add :name, :string, default: ""
+      add :email, :string, default: ""
+      add :password_encrypted, :string, default: ""
 
       timestamps()
     end

@@ -6,6 +6,10 @@
       form.form-table(@submit.prevent="submit")
         .inner
           .form-group
+            label.form-label コード
+            .form-inputs
+              input.input(type="text" v-model="taxonomy.code")
+          .form-group
             label.form-label 名称
             .form-inputs
               input.input(type="text" v-model="taxonomy.name")
@@ -14,17 +18,22 @@
 </template>
 
 <script>
+import * as api from "../../../api/taxonomies" // TODO:
+
 export default {
   data() {
     return {
       taxonomy: {
+        code: "",
         name: ""
       }
     }
   },
   methods: {
     submit() {
-      console.dir(this.taxonomy)
+      api.createTaxonomy(this.taxonomy).then(res => {
+        console.dir(res)
+      })
     }
   }
 }

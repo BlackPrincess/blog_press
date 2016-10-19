@@ -7,7 +7,7 @@ defmodule BlogPress.Admin.SessionController do
   
   def login(conn, _params, _user \\ nil, _claims \\ nil) do
     conn
-      |> render "login.html"
+      |> render("login.html")
   end
   
   def create(conn, params, _user, _claims) do
