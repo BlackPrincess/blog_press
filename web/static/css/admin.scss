@@ -160,3 +160,28 @@ body {
   border: 1px solid #ddd;
   margin-bottom: -1px;
 }
+
+/* ------------------------------------------------------
+ *
+ * ------------------------------------------------------ */
+ 
+ .slide {
+   $transition-duration: .2s;
+   $animation-range: 20px;
+   &-enter-active, &-leave-active {
+     transition: all $transition-duration ease;
+  }
+  &-enter-active {
+    transition-delay: $transition-duration;
+  }
+  
+  &-enter {
+    margin-left: $animation-range * -1;
+    opacity: 0;
+  }
+  
+  &-leave-active {
+    margin-left: $animation-range;
+    opacity: 0;
+  }
+}

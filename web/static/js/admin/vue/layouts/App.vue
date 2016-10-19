@@ -5,7 +5,8 @@
         | Blog Press Admin
     .wrapper
       .main
-        router-view.view
+        transition(name="slide")
+          router-view.view
       nav.sidebar
         ul
           li
