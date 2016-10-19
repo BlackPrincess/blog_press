@@ -1,9 +1,161 @@
 @import "k-css/k";
-
+input, textarea {
+  outline: 0;
+}
+input, textarea, button {
+  border: 0;
+}
+/* ------------------------------------------------------
+ *
+ * ------------------------------------------------------ */
+$c-white: #fff;
+$c-blue: #26a1ff;
+$c-darkblue: #0969b2;
+$c-red: #ff443f;
+$c-orange: #ff443f;
+$c-green: #b0b212;
+/* ------------------------------------------------------
+ *
+ * ------------------------------------------------------ */
 html, body {
   height: 100%;
 }
 
 body {
   font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+}
+
+/* ------------------------------------------------------
+ *
+ * ------------------------------------------------------ */
+.page-header {
+  display: flex;
+  align-items: stretch;
+  
+  .page-title {
+    order: 1;
+    flex: 1 0 80%;
+    font-weight: normal;
+    font-size: 3.2rem;
+  }
+  
+  .page-controls {
+    order: 2;
+    flex: 0 0 20%;
+    text-align: right;
+  }
+}
+
+.page-content {
+  margin-top: 20px;
+}
+
+/* ------------------------------------------------------
+ *
+ * ------------------------------------------------------ */
+ 
+.form-table {
+  .inner {
+    width: 100%;
+    display: table;
+  }
+  
+  .form-group {
+    display: table-row;
+    padding: 5px 0;
+  }
+
+  .form-label {
+    display: table-cell;
+    width: 120px;
+    padding: 7px 5px;
+    font-size: 1.6rem;
+    vertical-align: middle;
+  }
+
+  .form-inputs {
+    display: table-cell;
+    padding: 5px 10px;
+  }
+  
+  .form-controls {
+    padding: 5px;
+    text-align: center;
+  }
+}
+
+
+
+/* ------------------------------------------------------
+ *
+ * ------------------------------------------------------ */
+.btn {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  padding: 8px 20px;
+  border-radius: 2px;
+  font-size: 1.4rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 200ms;
+  transition-property: background-color, box-shadow;
+
+  &:hover,
+  &:focus {
+    box-shadow: rgba(0, 0, 0, 0.6);
+  }
+}
+
+
+
+.btn-new {
+  color: $c-white;
+  background-color: $c-blue;
+}
+
+.btn-submit {
+  color: $c-white;
+  background-color: $c-darkblue;
+}
+
+.btn-danger {
+  color: $c-white;
+  background-color: $c-red;
+}
+
+.btn-warning {
+  background-color: $c-orange;
+}
+
+.btn-success {
+  background-color: $c-green;
+}
+/* ------------------------------------------------------
+ *
+ * ------------------------------------------------------ */
+.input {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  font-size: 1.4rem;
+  background-color: #fafafa;
+  transition-duration: 300ms;
+  transition-property: border-color;
+  
+  &:focus {
+    border-color: #2088d7;
+  }
+}
+/* ------------------------------------------------------
+ *
+ * ------------------------------------------------------ */
+.list {
+  font-size: 1.6rem;
+}
+
+.list-group {
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  margin-bottom: -1px;
 }
