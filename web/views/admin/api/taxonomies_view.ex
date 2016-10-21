@@ -16,6 +16,16 @@ defmodule BlogPress.Admin.Api.TaxonomiesView do
   
   # TODO
   def render("error.json", %{changeset: changeset}) do
-    %{ messages: "error" }
+    errors = Enum.map(changeset.errors, fn {f, err} -> {f, translate_error(err)} end) 
+    %{status: "error", 
+      messages: Enum.into(errors, %{})
+    }
+  end
+  
+  def render("created.json", %{taxonomy: taxonomy}) do
+    %{
+      status: "success",
+      data: render_one(taxonomy, BlogPress.Admin.Api.TaxonomiesView, "taxonomy.json")
+    }
   end
 end

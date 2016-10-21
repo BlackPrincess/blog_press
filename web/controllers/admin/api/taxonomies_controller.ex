@@ -14,10 +14,10 @@ defmodule BlogPress.Admin.Api.TaxonomiesController do
   
   def create(conn, %{"taxonomy" => taxonomy_params}, _user, _claims) do
     changeset = Taxonomy.changeset(%Taxonomy{}, taxonomy_params)
-
+    
     case Repo.insert(changeset) do
-      {:ok, taxonomy} ->
-        render(conn, "taxonomy.json", taxonomies: taxonomy)
+      {:ok, changeset} ->
+        render(conn, "created.json", taxonomy: changeset)
       {:error, changeset} ->
         render(conn, "error.json", changeset: changeset)
     end
