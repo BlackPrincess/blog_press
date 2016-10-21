@@ -10,7 +10,7 @@
       nav.sidebar
         ul
           li
-            a.sidebar-link(href='#') 新規記事作成
+            router-link.sidebar-link(:to="{name: 'articles/new'}") 新規記事作成
           li
             a.sidebar-link(href='#') 記事一覧
           li
