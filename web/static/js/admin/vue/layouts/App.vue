@@ -12,7 +12,7 @@
           li
             router-link.sidebar-link(:to="{name: 'articles/new'}") 新規記事作成
           li
-            a.sidebar-link(href='#') 記事一覧
+            router-link.sidebar-link(:to="{name: 'articles/index'}") 記事一覧
           li
             router-link.sidebar-link(:to="{name: 'taxonomies/index'}") 分類管理
     footer.footer

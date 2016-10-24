@@ -7,21 +7,30 @@
         .form-group
           label タイトル
           input.input(v-model="article.title")
+          span.input-error-msg(v-if="errors.title") {{errors.title}}
+        .form-group
+          label URL
+          input.input(v-model="article.permalink")
+          span.input-error-msg(v-if="errors.permalink") {{errors.permalink}}
         .form-group
           label 公開日
-          input.input(v-model="article.published_at")
+          input.input(v-model="article.publishedAt")
+          span.input-error-msg(v-if="errors.publishedAt") {{errors.publishedAt}}
         .form-group
           label 本文
           .separate
             .left
               textarea.input.input-article-body(v-model="article.originalBody" rows=30)
+              span.input-error-msg(v-if="errors.originalBody") {{errors.originalBody}}
             .right
               .preview(v-html="bodyHtml")
+              span.input-error-msg(v-if="errors.bodyHtml") {{errors.bodyHtml}}
         .form-controls
           button.btn.btn-new(type="submit") 登録
 </template>
 
 <script>
+import * as api from "../../../api/articles" // TODO:
 import marked from 'marked'
 
 export default {
@@ -29,15 +38,28 @@ export default {
     return {      
       article: {
         title: '', 
+        permalink: '',
         originalBody: '',
-        body: '',
-        published_at: ''
-      }
+        bodyHtml: '',
+        publishedAt: ''
+      },
+      errors: {}
     }
   },
   computed: {
     bodyHtml: function() {
       return marked(this.article.originalBody)
+    }
+  },
+  methods: {
+    submit() {
+      api.createArticle(this.article).then(res => {
+        if(res.data.status == "success") {
+          this.$router.push({name: 'articles/index'})
+        } else {
+          this.errors = res.data.messages
+        }
+      })
     }
   }
 }

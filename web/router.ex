@@ -52,6 +52,7 @@ defmodule BlogPress.Router do
   scope "/admin/api", BlogPress, as: :admin_api do
     pipe_through [:admin_api]
     
+    resources "/articles", Admin.Api.ArticlesController, only: [:create]
     resources "/taxonomies", Admin.Api.TaxonomiesController, only: [:index, :create]
   end
   
