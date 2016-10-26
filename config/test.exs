@@ -15,5 +15,5 @@ config :blog_press, BlogPress.Repo,
   username: "postgres",
   password: "postgres",
   database: "blog_press_test",
-  hostname: "localhost",
+  hostname: "postgre95",
   pool: Ecto.Adapters.SQL.Sandbox
