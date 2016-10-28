@@ -1,4 +1,4 @@
-import * as StringUtil from "string_util"
+import * as StringUtil from "./string_util"
 
 export function camelizeKey(data) {
   if (!data || typeof data !== 'object') return data;

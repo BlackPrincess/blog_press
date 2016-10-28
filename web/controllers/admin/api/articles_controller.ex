@@ -8,10 +8,7 @@ defmodule BlogPress.Admin.Api.ArticlesController do
 
   def create(conn, %{"article" => article_params}, _user, _claims) do
     
-    changeset = article_params 
-      |> Enum.map(fn {k,v} -> {Mix.Utils.underscore(k), v} end)
-      |> Enum.into(%{})
-      |> (fn (a) -> Article.changeset(%Article{}, a) end).()
+    changeset = Article.changeset(%Article{}, article_params)
     
     case Repo.insert(changeset) do
       {:ok, changeset} ->

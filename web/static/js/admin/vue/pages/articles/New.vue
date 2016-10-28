@@ -31,6 +31,7 @@
 
 <script>
 import * as api from "../../../api/articles" // TODO:
+import * as jsonUtil from "../../../../core/utils/json_util" // TODO:
 import marked from 'marked'
 
 export default {
@@ -57,7 +58,7 @@ export default {
         if(res.data.status == "success") {
           this.$router.push({name: 'articles/index'})
         } else {
-          this.errors = res.data.messages
+          this.errors = jsonUtil.camelizeKey(res.data.messages)
         }
       })
     }
