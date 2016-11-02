@@ -115,6 +115,11 @@ body {
   background-color: $c-blue;
 }
 
+.btn-edit {
+  color: $c-white;
+  background-color: $c-green;
+}
+
 .btn-submit {
   color: $c-white;
   background-color: $c-darkblue;
@@ -163,6 +168,19 @@ body {
   padding: 6px 12px;
   border: 1px solid #ddd;
   margin-bottom: -1px;
+}
+
+.table {
+  border-collapse: collapse;
+  font-size: 1.6rem;
+  
+  &, th, td {
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    padding: 4px 8px;
+  }
 }
 
 /* ------------------------------------------------------

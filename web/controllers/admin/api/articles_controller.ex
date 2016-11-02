@@ -5,6 +5,10 @@ defmodule BlogPress.Admin.Api.ArticlesController do
   
   plug :put_layout, false
   plug Guardian.Plug.EnsureAuthenticated, [key: :admin]
+  
+  def index(conn, _params, _user, _claims) do
+    render conn, "index.json", %{articles: Article |> Repo.all}
+  end
 
   def create(conn, %{"article" => article_params}, _user, _claims) do
     
